@@ -1,6 +1,6 @@
-package com.fastcampus.ch4.dao;
+package com.fastcampus.ch4.board;
 
-import com.fastcampus.ch4.domain.*;
+import com.fastcampus.ch4.pageHandler.*;
 
 import java.util.*;
 
@@ -24,7 +24,7 @@ public interface BoardDao {
 
     int count() throws Exception;
 
-//    int searchResultCnt(SearchCondition sc) throws Exception;
-//
-//    List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception;
+    int searchResultCnt(SearchCondition sc) throws Exception;
+
+    List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception;
 }

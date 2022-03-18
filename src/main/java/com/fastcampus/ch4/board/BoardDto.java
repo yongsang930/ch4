@@ -1,4 +1,4 @@
-package com.fastcampus.ch4.domain;
+package com.fastcampus.ch4.board;
 
 import java.util.*;
 

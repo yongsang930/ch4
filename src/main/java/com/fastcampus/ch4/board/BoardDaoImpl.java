@@ -1,6 +1,6 @@
-package com.fastcampus.ch4.dao;
+package com.fastcampus.ch4.board;
 
-import com.fastcampus.ch4.domain.*;
+import com.fastcampus.ch4.pageHandler.*;
 import org.apache.ibatis.session.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -11,7 +11,7 @@ import java.util.*;
 public class BoardDaoImpl implements BoardDao {
     @Autowired
     private SqlSession session;
-    private static String namespace = "com.fastcampus.ch4.dao.BoardMapper.";
+    private static String namespace = "com.fastcampus.ch4.board.BoardMapper.";
 
     public int count() throws Exception {
         return session.selectOne(namespace+"count");
@@ -58,15 +58,16 @@ public class BoardDaoImpl implements BoardDao {
         return session.update(namespace+"increaseViewCnt", bno);
     } // int update(String statement, Object parameter)
 
-//    @Override
-//    public int searchResultCnt(SearchCondition sc) throws Exception {
-//        System.out.println("sc in searchResultCnt() = " + sc);
-//        System.out.println("session = " + session);
-//        return session.selectOne(namespace+"searchResultCnt", sc);
-//    } // T selectOne(String statement, Object parameter)
-//
-//    @Override
-//    public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
-//        return session.selectList(namespace+"searchSelectPage", sc);
-//    } // List<E> selectList(String statement, Object parameter)
+    @Override
+    public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
+        return session.selectList(namespace+"searchSelectPage", sc);
+    } // List<E> selectList(String statement, Object parameter)
+
+    @Override
+    public int searchResultCnt(SearchCondition sc) throws Exception {
+        System.out.println("sc in searchResultCnt() = " + sc);
+        System.out.println("session = " + session);
+        return session.selectOne(namespace+"searchResultCnt", sc);
+    } // T selectOne(String statement, Object parameter)
+
 }

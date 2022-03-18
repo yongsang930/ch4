@@ -75,13 +75,8 @@
         <li id="logo">fastcampus</li>
         <li><a href="<c:url value='/'/>">Home</a></li>
         <li><a href="<c:url value='/board/list'/>">Board</a></li>
-        <c:if test="${empty sessionScope.id}">
-            <li><a href="#">Login</a></li>
-        </c:if>
-        <c:if test="${not empty sessionScope.id}">
-            <li><a href="<c:url value='#'/>">Logout</a></li>
-        </c:if>
-        <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
+        <li><a href="<c:url value='/login/login'/>">login</a></li>
+        <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
 </div>

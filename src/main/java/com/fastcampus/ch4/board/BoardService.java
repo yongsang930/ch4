@@ -1,11 +1,11 @@
-package com.fastcampus.ch4.service;
+package com.fastcampus.ch4.board;
 
-import com.fastcampus.ch4.domain.BoardDto;
+import com.fastcampus.ch4.pageHandler.SearchCondition;
 
 import java.util.List;
 import java.util.Map;
 
-public interface BoardServiceImpl {
+public interface BoardService {
     int getCount() throws Exception;
 
     int remove(Integer bno, String writer) throws Exception;
@@ -20,7 +20,7 @@ public interface BoardServiceImpl {
 
     int modify(BoardDto boardDto) throws Exception;
 
-//    int getSearchResultCnt(SearchCondition sc) throws Exception;
-//
-//    List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception;
+    int getSearchResultCnt(SearchCondition sc) throws Exception;
+
+    List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception;
 }

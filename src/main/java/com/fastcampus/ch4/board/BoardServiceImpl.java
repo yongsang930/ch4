@@ -1,14 +1,13 @@
-package com.fastcampus.ch4.service;
+package com.fastcampus.ch4.board;
 
-import com.fastcampus.ch4.dao.*;
-import com.fastcampus.ch4.domain.*;
+import com.fastcampus.ch4.pageHandler.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import java.util.*;
 
 @Service
-public class BoardService implements BoardServiceImpl {
+public class BoardServiceImpl implements BoardService {
     @Autowired
     BoardDao boardDao;
 
@@ -50,13 +49,13 @@ public class BoardService implements BoardServiceImpl {
         return boardDao.update(boardDto);
     }
 
-//    @Override
-//    public int getSearchResultCnt(SearchCondition sc) throws Exception {
-//        return boardDao.searchResultCnt(sc);
-//    }
-//
-//    @Override
-//    public List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception {
-//        return boardDao.searchSelectPage(sc);
-//    }
+    @Override
+    public int getSearchResultCnt(SearchCondition sc) throws Exception {
+        return boardDao.searchResultCnt(sc);
+    }
+
+    @Override
+    public List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception {
+        return boardDao.searchSelectPage(sc);
+    }
 }
