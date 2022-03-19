@@ -1,4 +1,4 @@
-package com.fastcampus.ch4.pageHandler;
+package com.fastcampus.ch4.dto;
 
 public class Person {
 

@@ -1,9 +1,8 @@
-package com.fastcampus.ch4.user;
+package com.fastcampus.ch4.dto;
 
-import com.fastcampus.ch4.board.BoardDao;
-import com.fastcampus.ch4.board.BoardDto;
+import com.fastcampus.ch4.dao.BoardDao;
 import com.fastcampus.ch4.pageHandler.*;
-import com.fastcampus.ch4.board.BoardService;
+import com.fastcampus.ch4.service.BoardService;
 import org.junit.*;
 import org.junit.runner.*;
 import org.springframework.beans.factory.annotation.*;

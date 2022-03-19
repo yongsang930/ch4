@@ -1,10 +1,12 @@
-package com.fastcampus.ch4.board;
+package com.fastcampus.ch4.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.fastcampus.ch4.dto.BoardDto;
 import com.fastcampus.ch4.pageHandler.PageHandler;
 import com.fastcampus.ch4.pageHandler.SearchCondition;
+import com.fastcampus.ch4.service.BoardServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class BoardController {
     BoardServiceImpl boardService;
 
     @PostMapping("/modify")
-    public String modify(BoardDto boardDto, Model m, HttpSession session, RedirectAttributes rattr,Integer page, Integer pageSize) {
+    public String modify(BoardDto boardDto, Model m, HttpSession session, RedirectAttributes rattr, Integer page, Integer pageSize) {
         String writer = (String) session.getAttribute("id");
         boardDto.setWriter(writer);
 

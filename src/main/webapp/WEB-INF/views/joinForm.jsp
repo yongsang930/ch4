@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -13,10 +13,15 @@
 <body>
 <div id="menu">
     <ul>
-        <li id="logo">fastcampus</li>
+        <li id="logo">Hello!</li>
         <li><a href="<c:url value='/'/>">Home</a></li>
         <li><a href="<c:url value='/board/list'/>">Board</a></li>
-        <li><a href="<c:url value='${loginOutLink}'/>">${loginOut}</a></li>
+        <c:if test="${not empty sessionScope.id}">
+            <li><a href="<c:url value='/login/logout'/>">logout</a></li>
+        </c:if>
+        <c:if test="${empty sessionScope.id}">
+            <li><a href="<c:url value='/login/login'/>">login</a></li>
+        </c:if>
         <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
@@ -33,20 +38,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="password" name="pwd" id="boxy"
+                    <td colspan="2"><input type="password" name="pwd" id="mm"
                                            autocomplete='off' placeholder="비밀번호 입력" required></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="text" name="name" id="boxy"
+                    <td colspan="2"><input type="text" name="name" id="mm"
                                            autocomplete='off' placeholder="이름 입력" required></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="tel" name="tel" id="boxy"
+                    <td colspan="2"><input type="tel" name="tel" id="mm"
                                            autocomplete='off' placeholder="'-'없이 휴대폰 번호만 입력" required
                                            maxlength="11"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="text" name="email" id="boxy"
+                    <td colspan="2"><input type="text" name="email" id="mm"
                                            autocomplete='off' placeholder="이메일 입력" required></td>
                 </tr>
                 <tr>
@@ -55,15 +60,15 @@
                                 onclick="sample4_execDaumPostcode()">search
                         </button>
                     </th>
-                    <td id="boxy"><input type="text" name="post_a"
-                                         id="sample4_postcode" placeholder="우편번호" required></td>
+                    <td id="mm"><input type="text" name="post_a"
+                                       id="sample4_postcode" placeholder="우편번호" required></td>
                 </tr>
-                <td id="boxy"><input type="text" name="road_a"
-                                     id="sample4_roadAddress" autocomplete='off' placeholder="도로명주소"
-                                     required></td>
+                <td id="mm"><input type="text" name="road_a"
+                                   id="sample4_roadAddress" autocomplete='off' placeholder="도로명주소"
+                                   required></td>
                 <tr>
-                    <td id="boxy"><input type="text" name="detail_a"
-                                         id="sample4_detailAddress" placeholder="상세주소 입력"></td>
+                    <td id="mm"><input type="text" name="detail_a"
+                                       id="sample4_detailAddress" placeholder="상세주소 입력"></td>
                 </tr>
                 <tr>
                     <th>type</th>
@@ -77,17 +82,17 @@
                 </tr>
                 <tr>
                     <td colspan="2" id="ee">
-                        <button id="but" type="reset">초기화</button>
+                        <button id="btn" type="reset">초기화</button>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" id="ee">
-                        <button id="but" type="submit" id="join">가입</button>
+                        <button id="btn" type="submit" id="join">가입</button>
                     </td>
                 </tr>
             </table>
         </form>
-        <span id="idResult" style="color: red; font-size: 15px"></span>
+        <span id="idResult" style="color: #ff0000; font-size: 15px"></span>
     </div>
 </div>
 </body>

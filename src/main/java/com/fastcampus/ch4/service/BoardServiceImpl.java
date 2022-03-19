@@ -1,6 +1,9 @@
-package com.fastcampus.ch4.board;
+package com.fastcampus.ch4.service;
 
+import com.fastcampus.ch4.dao.BoardDao;
+import com.fastcampus.ch4.dto.BoardDto;
 import com.fastcampus.ch4.pageHandler.*;
+import com.fastcampus.ch4.service.BoardService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 

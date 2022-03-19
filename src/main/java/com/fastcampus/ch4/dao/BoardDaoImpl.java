@@ -1,5 +1,7 @@
-package com.fastcampus.ch4.board;
+package com.fastcampus.ch4.dao;
 
+import com.fastcampus.ch4.dao.BoardDao;
+import com.fastcampus.ch4.dto.BoardDto;
 import com.fastcampus.ch4.pageHandler.*;
 import org.apache.ibatis.session.*;
 import org.springframework.beans.factory.annotation.*;

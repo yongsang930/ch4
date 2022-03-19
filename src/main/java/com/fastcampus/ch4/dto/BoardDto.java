@@ -1,4 +1,4 @@
-package com.fastcampus.ch4.board;
+package com.fastcampus.ch4.dto;
 
 import java.util.*;
 

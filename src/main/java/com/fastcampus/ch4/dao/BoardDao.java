@@ -1,5 +1,6 @@
-package com.fastcampus.ch4.board;
+package com.fastcampus.ch4.dao;
 
+import com.fastcampus.ch4.dto.BoardDto;
 import com.fastcampus.ch4.pageHandler.*;
 
 import java.util.*;

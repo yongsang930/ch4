@@ -3,12 +3,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.fastcampus.ch4.user.UserMapper">
+<mapper namespace="com.fastcampus.ch4.dao.UserMapper">
 
     <select id="selectUser" parameterType="String" resultType="User">
         SELECT *
         FROM user
         WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="List">
+        SELECT *
+        FROM user
     </select>
 
     <delete id="deleteUser" parameterType="String">
@@ -19,17 +24,20 @@
 
     <insert id="insertUser" parameterType="User">
         insert into user
-        values (#{id}, #{pwd}, #{name}, #{pNumber}, #{email}, #{type}, now())
+        values (#{id}, #{pwd}, #{name}, #{pNumber}, #{email}, #{post_number}, #{address}, #{detail_adr}, now()) #{type}
     </insert>
 
     <update id="updateUser" parameterType="User">
         UPDATE user
-        SET pwd     = #{pwd},
+        SET pwd         = #{pwd},
             name=#{name},
-            pNumber =#{pNumber},
+            pNumber     =#{pNumber},
             email=#{email},
-            type=#{type},
-            now()
+            post_number =#{post_number},
+            address     =#{address},
+            detail_adr=#{detail_adr},
+            now(),
+            type=#{type}
         WHERE id = #{id}
     </update>
 

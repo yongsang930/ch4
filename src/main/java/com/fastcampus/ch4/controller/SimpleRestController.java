@@ -1,6 +1,6 @@
-package com.fastcampus.ch4.pageHandler;
+package com.fastcampus.ch4.controller;
 
-import com.fastcampus.ch4.pageHandler.*;
+import com.fastcampus.ch4.dto.Person;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 

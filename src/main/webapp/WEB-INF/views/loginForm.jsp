@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<c:set var="loginId"
-       value="${pageContext.request.getSession(false)==null ? '' : pageContext.request.session.getAttribute('id')}"/>
-<c:set var="loginOutLink" value="${loginId=='' ? '/login/login' : '/login/logout'}"/>
-<c:set var="loginOut" value="${loginId=='' ? 'Login' : 'ID='+=loginId}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,10 +68,15 @@
 <body>
 <div id="menu">
     <ul>
-        <li id="logo">fastcampus</li>
+        <li id="logo">Hello!</li>
         <li><a href="<c:url value='/'/>">Home</a></li>
         <li><a href="<c:url value='/board/list'/>">Board</a></li>
-        <li><a href="<c:url value='/login/login'/>">login</a></li>
+        <c:if test="${not empty sessionScope.id}">
+            <li><a href="<c:url value='/login/logout'/>">logout</a></li>
+        </c:if>
+        <c:if test="${empty sessionScope.id}">
+            <li><a href="<c:url value='/login/login'/>">login</a></li>
+        </c:if>
         <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
@@ -84,18 +85,18 @@
     <h3 id="title">Login</h3>
     <div id="msg">
         <c:if test="${not empty param.msg}">
-            <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>
+            <i class="fa fa-exclamation-circle"> ${param.msg}</i>
         </c:if>
     </div>
     <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
     <input type="password" name="pwd" placeholder="비밀번호">
-    <input type="hidden" name="toURL" value="${param.toURL}">
+<%--    <input type="hidden" name="toURL" value="${param.toURL}">--%>
     <button>로그인</button>
     <div>
         <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디
             기억</label> |
         <a href="">비밀번호 찾기</a> |
-        <a href="">회원가입</a>
+        <a href="<c:url value='/login/add'/>">회원가입</a>
     </div>
     <script>
         function formCheck(frm) {

@@ -1,5 +1,6 @@
-package com.fastcampus.ch4.board;
+package com.fastcampus.ch4.service;
 
+import com.fastcampus.ch4.dto.BoardDto;
 import com.fastcampus.ch4.pageHandler.SearchCondition;
 
 import java.util.List;
