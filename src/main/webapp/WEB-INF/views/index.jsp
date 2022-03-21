@@ -15,13 +15,18 @@
         }
 
         .map {
-            height: 700px;
             width: 100%;
-        }
-        #mapTitle{
-
+            height: 700px;
         }
 
+        #mapTitle {
+            font-weight: bold;
+            font-size: 30px;
+            padding: 0px 0px 30px 0px;
+            background-color: white;
+            border: none;
+            text-align: center;
+        }
     </style>
     <script src="https://openlayers.org/en/v3.20.1/build/ol.js" type="text/javascript"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4-src.js"></script>
@@ -44,7 +49,12 @@
 </div>
 <div style="text-align:center">
     <%--3F9FBEBB-2FBF-396A-B8F9-22C67E40A94F--%>
-    <span id="mapTitle">My Map</span>
+    <div id="mapTitle">My Map</div>
+    <div>
+        <input type="checkbox" id="sido"/>시도
+        <input type="checkbox" id="ssg"/>시군구
+        <input type="checkbox" id="umd"/>읍면동
+    </div>
     <div id="map" class="map"></div>
     <script type="text/javascript">
         // define epsg:5181 projection
@@ -110,19 +120,21 @@
                 ],
             }),
         });
+
         var wmsLayer = new ol.layer.Tile({
             source: new ol.source.TileWMS({
-                url: "http://localhost:8088/geoserver/Test/wms",
+                url: "http://localhost:8088/geoserver/boundary/wms",
                 params: {
                     VERSION: "1.1.0",
-                    LAYERS: "Test:lard_adm_sect_sgg_41",
-                    BBOX: [900488.4375, 1877295.125, 1030749.75, 2031396.625],
-                    SRS: "EPSG:5179",
+                    LAYERS: "boundary:z_ngii_n3a_g0010000",
+                    BBOX: [22537.658203125, -42034.9921875, 632508.8125, 545439.375],
+                    SRS: "EPSG:5181",
                     FORMAT: "image/png",
                 },
                 serverType: "geoserver",
             }),
         });
+
         var map = new ol.Map({
             target: "map",
             layers: [tileLayer],
@@ -136,7 +148,7 @@
                 resolutions: resolutions,
                 maxResolution: resolutions[0],
                 zoomFactor: 1,
-                center: [(extent[0] + extent[2]) / 2, (extent[1] + extent[3]) / 2],
+                center: [248403, 272948],
                 zoom: 1,
             }),
         });
