@@ -76,8 +76,8 @@
         </c:if>
         <c:if test="${empty sessionScope.id}">
             <li><a href="<c:url value='/login/login'/>">login</a></li>
+            <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         </c:if>
-        <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
 </div>
@@ -90,7 +90,7 @@
     </div>
     <input type="text" name="id" value="${cookie.id.value}" placeholder="이메일 입력" autofocus>
     <input type="password" name="pwd" placeholder="비밀번호">
-<%--    <input type="hidden" name="toURL" value="${param.toURL}">--%>
+    <%--    <input type="hidden" name="toURL" value="${param.toURL}">--%>
     <button>로그인</button>
     <div>
         <label><input type="checkbox" name="rememberId" value="on" ${empty cookie.id.value ? "":"checked"}> 아이디

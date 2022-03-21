@@ -15,9 +15,13 @@
         }
 
         .map {
-            height: 100%;
+            height: 700px;
             width: 100%;
         }
+        #mapTitle{
+
+        }
+
     </style>
     <script src="https://openlayers.org/en/v3.20.1/build/ol.js" type="text/javascript"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4-src.js"></script>
@@ -33,14 +37,14 @@
         </c:if>
         <c:if test="${empty sessionScope.id}">
             <li><a href="<c:url value='/login/login'/>">login</a></li>
+            <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         </c:if>
-        <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
 </div>
 <div style="text-align:center">
     <%--3F9FBEBB-2FBF-396A-B8F9-22C67E40A94F--%>
-    <h2>My Map</h2>
+    <span id="mapTitle">My Map</span>
     <div id="map" class="map"></div>
     <script type="text/javascript">
         // define epsg:5181 projection
@@ -106,7 +110,19 @@
                 ],
             }),
         });
-
+        var wmsLayer = new ol.layer.Tile({
+            source: new ol.source.TileWMS({
+                url: "http://localhost:8088/geoserver/Test/wms",
+                params: {
+                    VERSION: "1.1.0",
+                    LAYERS: "Test:lard_adm_sect_sgg_41",
+                    BBOX: [900488.4375, 1877295.125, 1030749.75, 2031396.625],
+                    SRS: "EPSG:5179",
+                    FORMAT: "image/png",
+                },
+                serverType: "geoserver",
+            }),
+        });
         var map = new ol.Map({
             target: "map",
             layers: [tileLayer],
@@ -124,6 +140,7 @@
                 zoom: 1,
             }),
         });
+        map.addLayer(wmsLayer);
     </script>
 </div>
 </body>

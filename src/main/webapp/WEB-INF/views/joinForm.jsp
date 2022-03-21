@@ -22,8 +22,8 @@
         </c:if>
         <c:if test="${empty sessionScope.id}">
             <li><a href="<c:url value='/login/login'/>">login</a></li>
+            <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         </c:if>
-        <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
 </div>
@@ -48,7 +48,7 @@
                                            autocomplete='off' placeholder="이름 입력" required></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="tel" name="tel" id="mm"
+                    <td colspan="2"><input type="tel" name="pNumber" id="mm"
                                            autocomplete='off' placeholder="'-'없이 휴대폰 번호만 입력" required
                                            maxlength="11"></td>
                 </tr>
@@ -61,14 +61,14 @@
                         <button type="button" id="searchAddr" onclick="sample4_execDaumPostcode()">search
                         </button>
                     </th>
-                    <td id="mm"><input type="text" name="post_a"
+                    <td id="mm"><input type="text" name="post_number"
                                        id="sample4_postcode" placeholder="우편번호" required></td>
                 </tr>
-                <td id="mm"><input type="text" name="road_a"
+                <td id="mm"><input type="text" name="address"
                                    id="sample4_roadAddress" autocomplete='off' placeholder="도로명주소"
                                    required></td>
                 <tr>
-                    <td id="mm"><input type="text" name="detail_a"
+                    <td id="mm"><input type="text" name="detail_adr"
                                        id="sample4_detailAddress" placeholder="상세주소 입력"></td>
                 </tr>
                 <tr>
@@ -78,7 +78,7 @@
                             <input type="radio" id="normal" name="type" value="일반">일반 이용자
                             <div style="width: 40px" id="empty"></div>
                             <input type="radio" id="inner" name="type" value="직원">직원
-                            <input type="hidden" name="type" value="관리자">
+                            <%--<input type="hidden" name="type" value="관리자">--%>
                         </div>
                     </td>
                 </tr>

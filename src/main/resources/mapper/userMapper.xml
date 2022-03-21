@@ -24,7 +24,7 @@
 
     <insert id="insertUser" parameterType="User">
         insert into user
-        values (#{id}, #{pwd}, #{name}, #{pNumber}, #{email}, #{post_number}, #{address}, #{detail_adr}, now()) #{type}
+        values (#{id}, #{pwd}, #{name}, #{pNumber}, #{email}, #{post_number}, #{address}, #{detail_adr}, now(), #{type})
     </insert>
 
     <update id="updateUser" parameterType="User">

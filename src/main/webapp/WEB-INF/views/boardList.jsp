@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<%@ page session="true"%>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +22,7 @@
             text-decoration: none;
             color: black;
         }
+
         button,
         input {
             border: none;
@@ -34,21 +35,24 @@
             margin: 0 auto;
             /* border: 1px solid black; */
         }
+
         .search-container {
             background-color: rgb(253, 253, 250);
             width: 100%;
             height: 110px;
             border: 1px solid #ddd;
-            margin-top : 10px;
+            margin-top: 10px;
             margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .search-form {
             height: 37px;
             display: flex;
         }
+
         .search-option {
             width: 100px;
             height: 100%;
@@ -71,6 +75,7 @@
             font-size: 15px;
             padding: 5px 7px;
         }
+
         .search-input::placeholder {
             color: gray;
         }
@@ -86,6 +91,7 @@
             justify-content: center;
             font-size: 15px;
         }
+
         .search-button:hover {
             color: rgb(165, 165, 165);
         }
@@ -102,7 +108,7 @@
 
         th,
         td {
-            width:300px;
+            width: 300px;
             text-align: center;
             padding: 10px 12px;
             border-bottom: 1px solid #ddd;
@@ -112,12 +118,25 @@
             color: rgb(53, 53, 53);
         }
 
-        .no      { width:150px;}
-        .title   { width:50%;  }
+        .no {
+            width: 150px;
+        }
 
-        td.title   { text-align: left;  }
-        td.writer  { text-align: left;  }
-        td.viewcnt { text-align: right; }
+        .title {
+            width: 50%;
+        }
+
+        td.title {
+            text-align: left;
+        }
+
+        td.writer {
+            text-align: left;
+        }
+
+        td.viewcnt {
+            text-align: right;
+        }
 
         td.title:hover {
             text-decoration: underline;
@@ -134,6 +153,7 @@
             padding: 6px;
             margin-right: 10px;
         }
+
         .paging-active {
             background-color: rgb(216, 216, 216);
             border-radius: 5px;
@@ -141,12 +161,13 @@
         }
 
         .paging-container {
-            width:100%;
+            width: 100%;
             height: 70px;
             display: flex;
             margin-top: 50px;
-            margin : auto;
+            margin: auto;
         }
+
         .btn-write {
             background-color: rgb(236, 236, 236); /* Blue background */
             border: none; /* Remove borders */
@@ -174,20 +195,20 @@
         </c:if>
         <c:if test="${empty sessionScope.id}">
             <li><a href="<c:url value='/login/login'/>">login</a></li>
+            <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         </c:if>
-        <li><a href="<c:url value='/login/add'/>">Sign in</a></li>
         <li><a href=""><i class="fa fa-search"></i></a></li>
     </ul>
 </div>
 <script>
     let msg = "${msg}";
-    if(msg=="LIST_ERR")  alert("게시물 목록을 가져오는데 실패했습니다. 다시 시도해 주세요.");
-    if(msg=="READ_ERR")  alert("삭제되었거나 없는 게시물입니다.");
-    if(msg=="DEL_ERR")   alert("삭제되었거나 없는 게시물입니다.");
+    if (msg == "LIST_ERR") alert("게시물 목록을 가져오는데 실패했습니다. 다시 시도해 주세요.");
+    if (msg == "READ_ERR") alert("삭제되었거나 없는 게시물입니다.");
+    if (msg == "DEL_ERR") alert("삭제되었거나 없는 게시물입니다.");
 
-    if(msg=="DEL_OK")    alert("성공적으로 삭제되었습니다.");
-    if(msg=="WRT_OK")    alert("성공적으로 등록되었습니다.");
-    if(msg=="MOD_OK")    alert("성공적으로 수정되었습니다.");
+    if (msg == "DEL_OK") alert("성공적으로 삭제되었습니다.");
+    if (msg == "WRT_OK") alert("성공적으로 등록되었습니다.");
+    if (msg == "MOD_OK") alert("성공적으로 수정되었습니다.");
 </script>
 <div style="text-align:center">
     <div class="board-container">
@@ -199,10 +220,13 @@
                     <option value="W" ${ph.sc.option=='W' ? "selected" : ""}>작성자</option>
                 </select>
 
-                <input type="text" name="keyword" class="search-input" type="text" value="${ph.sc.keyword}" placeholder="검색어를 입력해주세요">
+                <input type="text" name="keyword" class="search-input" type="text" value="${ph.sc.keyword}"
+                       placeholder="검색어를 입력해주세요">
                 <input type="submit" class="search-button" value="검색">
             </form>
-            <button id="writeBtn" class="btn-write" onclick="location.href='<c:url value="/board/write"/>'"><i class="fa fa-pencil"></i> 글쓰기</button>
+            <button id="writeBtn" class="btn-write" onclick="location.href='<c:url value="/board/write"/>'"><i
+                    class="fa fa-pencil"></i> 글쓰기
+            </button>
         </div>
 
         <table>
@@ -216,14 +240,18 @@
             <c:forEach var="boardDto" items="${list}">
                 <tr>
                     <td class="no">${boardDto.bno}</td>
-                    <td class="title"><a href="<c:url value="/board/read${ph.sc.queryString}&bno=${boardDto.bno}"/>"><c:out value="${boardDto.title}"/></a></td>
+                    <td class="title"><a
+                            href="<c:url value="/board/read${ph.sc.queryString}&bno=${boardDto.bno}"/>"><c:out
+                            value="${boardDto.title}"/></a></td>
                     <td class="writer">${boardDto.writer}</td>
                     <c:choose>
                         <c:when test="${boardDto.reg_date.time >= startOfToday}">
-                            <td class="regdate"><fmt:formatDate value="${boardDto.reg_date}" pattern="HH:mm" type="time"/></td>
+                            <td class="regdate"><fmt:formatDate value="${boardDto.reg_date}" pattern="HH:mm"
+                                                                type="time"/></td>
                         </c:when>
                         <c:otherwise>
-                            <td class="regdate"><fmt:formatDate value="${boardDto.reg_date}" pattern="yyyy-MM-dd" type="date"/></td>
+                            <td class="regdate"><fmt:formatDate value="${boardDto.reg_date}" pattern="yyyy-MM-dd"
+                                                                type="date"/></td>
                         </c:otherwise>
                     </c:choose>
                     <td class="viewcnt">${boardDto.view_cnt}</td>
@@ -234,17 +262,20 @@
         <div class="paging-container">
             <div class="paging">
                 <c:if test="${totalCnt==null || totalCnt==0}">
-                    <div> 게시물이 없습니다. </div>
+                    <div> 게시물이 없습니다.</div>
                 </c:if>
                 <c:if test="${totalCnt!=null && totalCnt!=0}">
                     <c:if test="${ph.showPrev}">
-                        <a class="page" href="<c:url value="/board/list${ph.sc.getQueryString(ph.beginPage-1)}"/>">&lt;</a>
+                        <a class="page"
+                           href="<c:url value="/board/list${ph.sc.getQueryString(ph.beginPage-1)}"/>">&lt;</a>
                     </c:if>
                     <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
-                        <a class="page ${i==ph.sc.page? "paging-active" : ""}" href="<c:url value="/board/list${ph.sc.getQueryString(i)}"/>">${i}</a>
+                        <a class="page ${i==ph.sc.page? "paging-active" : ""}"
+                           href="<c:url value="/board/list${ph.sc.getQueryString(i)}"/>">${i}</a>
                     </c:forEach>
                     <c:if test="${ph.showNext}">
-                        <a class="page" href="<c:url value="/board/list${ph.sc.getQueryString(ph.endPage+1)}"/>">&gt;</a>
+                        <a class="page"
+                           href="<c:url value="/board/list${ph.sc.getQueryString(ph.endPage+1)}"/>">&gt;</a>
                     </c:if>
                 </c:if>
             </div>

@@ -81,7 +81,7 @@ public class UserController {
     public int idCheck(HttpServletRequest req, @RequestBody String id) {
         int chk = 0;
         UserDto user = null;
-        System.out.println("입력된 id=" + id);
+        System.out.println("입력된 id = " + id);
         try {
             HttpSession session = req.getSession(false);
 
@@ -91,7 +91,7 @@ public class UserController {
             } else {
                 chk = 1;
             }
-            System.out.println("일치하는 user =" + user);
+            System.out.println("일치하는 user = " + user);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,19 +118,14 @@ public class UserController {
             userTmp.setDetail_adr(user.getDetail_adr());
             userTmp.setType(user.getType());
 
-            service.addUser(userTmp);
+            int chk = service.addUser(userTmp);
+
+            if (chk != 1) {
+                return "loginForm";
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-        try {
-            service.addUser(user);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         return "redirect:/";
     }
 }

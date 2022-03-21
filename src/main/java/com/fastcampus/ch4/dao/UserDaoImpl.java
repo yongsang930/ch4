@@ -13,7 +13,7 @@ import java.util.Map;
 public class UserDaoImpl implements UserDao {
     @Autowired
     private SqlSession session;
-    private static String namespace = "com.fastcampus.ch4.user.UserMapper.";
+    private static String namespace = "com.fastcampus.ch4.dao.UserMapper.";
 
     @Override
     public int deleteUser(String id) throws Exception {
