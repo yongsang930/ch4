@@ -131,6 +131,6 @@ public class UserController {
             e.printStackTrace();
         }
 
-        return "/";
+        return "redirect:/";
     }
 }

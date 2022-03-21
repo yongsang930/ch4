@@ -4,11 +4,12 @@
 <!DOCTYPE>
 <html>
 <head>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <link rel="stylesheet" href="<c:url value='/css/menu.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/joinForm.css'/>">
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script src="<c:url value='/js/address.js'/>"></script>
     <script src="<c:url value='/js/id_check.js'/>"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <div id="menu">
@@ -29,11 +30,12 @@
 <div id="container">
     <div id="list">
         <h3>회원가입</h3>
-        <form method="post" action="/login/join">
+        <form method="post" action="<c:url value='/login/join'/>">
             <table border=1>
                 <tr>
-                    <td colspan="2"><input type="text" name="id" id="box" class="id"
-                                           autocomplete='off' placeholder="아이디 입력" required>
+                    <td colspan="2">
+                        <input type="text" name="id" id="box" class="id"
+                               autocomplete='off' placeholder="아이디 입력" required>
                         <button type="button" id="idCheck">중복체크</button>
                     </td>
                 </tr>
@@ -56,8 +58,7 @@
                 </tr>
                 <tr>
                     <th rowspan="3">address<br>
-                        <button type="button" id="searchAddr"
-                                onclick="sample4_execDaumPostcode()">search
+                        <button type="button" id="searchAddr" onclick="sample4_execDaumPostcode()">search
                         </button>
                     </th>
                     <td id="mm"><input type="text" name="post_a"
@@ -74,9 +75,10 @@
                     <th>type</th>
                     <td>
                         <div id="radioCheck">
-                            <input type="radio" name="type" value="1">판매자 <input
-                                type="radio" name="type" value="2">구매자 <input
-                                type="radio" name="type" value="3">관리자
+                            <input type="radio" id="normal" name="type" value="일반">일반 이용자
+                            <div style="width: 40px" id="empty"></div>
+                            <input type="radio" id="inner" name="type" value="직원">직원
+                            <input type="hidden" name="type" value="관리자">
                         </div>
                     </td>
                 </tr>

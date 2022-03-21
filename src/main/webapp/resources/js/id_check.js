@@ -4,7 +4,7 @@ $(document).ready(function () {
         let cnt;
 
         if (bool == null || bool == "") {
-            return alert("아이디를 입력하세요15");
+            return alert("아이디를 입력하세요");
         }
 
         $.ajax({
