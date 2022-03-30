@@ -34,7 +34,7 @@
 <body>
 <div id="menu">
     <ul>
-        <li id="logo">Hello!</li>
+        <li id="logo"><a href="<c:url value='/'/>">Hello!</a></li>
         <li><a href="<c:url value='/'/>">Home</a></li>
         <li><a href="<c:url value='/board/list'/>">Board</a></li>
         <c:if test="${not empty sessionScope.id}">
