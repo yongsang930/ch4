@@ -66,6 +66,14 @@ public class BoardDaoImpl implements BoardDao {
     } // List<E> selectList(String statement, Object parameter)
 
     @Override
+    public int updateCommentCnt(Integer bno, int cnt) {
+        Map map = new HashMap();
+        map.put("cnt", cnt);
+        map.put("bno", bno);
+        return session.update(namespace+"updateCommentCnt",map);
+    }
+
+    @Override
     public int searchResultCnt(SearchCondition sc) throws Exception {
         System.out.println("sc in searchResultCnt() = " + sc);
         System.out.println("session = " + session);
